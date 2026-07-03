@@ -1,0 +1,16 @@
+services:
+  u1-spoolman-bridge:
+    build: ./src/
+    container_name: u1-spoolman-bridge
+    restart: unless-stopped
+    environment:
+      MOONRAKER_URL: "${MOONRAKER_URL:?set MOONRAKER_URL}"
+      SPOOLMAN_URL: "${SPOOLMAN_URL:?set SPOOLMAN_URL}"
+      ASSIGN_GCODE_TEMPLATE: "SET_TOOL_SPOOL TOOL={tool} ID={spool_id}"
+      # Optional:
+      # MOONRAKER_API_KEY: "${MOONRAKER_API_KEY:-}"
+      # SPOOLMAN_API_KEY: "${SPOOLMAN_API_KEY:-}"
+      # FILAMENT_OBJECT: "${FILAMENT_OBJECT:-filament_detect}"
+      # DEBOUNCE_SECONDS: "${DEBOUNCE_SECONDS:-2.0}"
+    # logging:
+    #   driver: none
